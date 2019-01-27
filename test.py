@@ -1,5 +1,5 @@
 import gym
-import gym-gridworld
+import gym_gridworld
 
 env = gym.make('gridworld-v0')
 

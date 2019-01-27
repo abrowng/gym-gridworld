@@ -7,8 +7,7 @@ from gym.utils import seeding
 class GridWorldEnv(gym.Env):
     metadata = {'render.modes': ['human']}
 
-    def __init__(self, noise=0.2, terminal_reward=10, start_state=0
-            width=5, height=5):
+    def __init__(self, noise=0.2, terminal_reward=10, start_state=0, width=5, height=5):
         self.height = height
         self.width = width
         self.noise = noise
@@ -23,9 +22,7 @@ class GridWorldEnv(gym.Env):
         #4 possible actions: North, South, East, West
         self.actions = [0, 1, 2, 3]
         self.action_space = spaces.Discrete(4)
-        self.observation_space = spaces.Tuple(
-            spaces.Discrete(self.width),
-            spaces.Discrete(self.height))
+        self.observation_space = spaces.Tuple((spaces.Discrete(self.width),spaces.Discrete(self.height)))
 
         self.reset()
 
@@ -65,7 +62,7 @@ class GridWorldEnv(gym.Env):
 
     def reset(self):
         self.state = self.start_state
-        self.done = false
+        self.done = False
         return self.state
 
     def render(self, mode='human', close=False):
