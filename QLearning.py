@@ -8,14 +8,10 @@ class QLearningAgent():
     """
       Q-Learning Agent
 
-      Instance variables you have access to
+      Instance variables
         - self.epsilon (exploration prob)
-        - self.alpha (learning rate)
-        - self.discount (discount rate)
-
-      Functions you should use
-        - self.getLegalActions(state)
-          which returns legal actions for a state
+        - self.lr (learning rate)
+        - self.gamma (discount rate)
     """
     def __init__(self, actions):
         self.epsilon = 0.8      #Exploration
@@ -27,7 +23,7 @@ class QLearningAgent():
     def getQValue(self, state, action):
         """
           Returns Q(state,action)
-          Should return 0.0 if we have never seen a state
+          Returns 0.0 if we have never seen a state
           or the Q node value otherwise
         """
         if (state, action) in self.qvalues:
@@ -38,9 +34,7 @@ class QLearningAgent():
     def computeValueFromQValues(self, state):
         """
           Returns max_action Q(state,action)
-          where the max is over legal actions.  Note that if
-          there are no legal actions, which is the case at the
-          terminal state, you should return a value of 0.0.
+          where the max is over legal actions.
         """
         qValues = dict()
         if len(self.actions) > 0:
@@ -52,9 +46,7 @@ class QLearningAgent():
 
     def computeActionFromQValues(self, state):
         """
-          Compute the best action to take in a state.  Note that if there
-          are no legal actions, which is the case at the terminal state,
-          you should return None.
+          Compute the best action to take in a state.
         """
         max = float('-inf')
         list = []
@@ -76,11 +68,8 @@ class QLearningAgent():
         """
           Compute the action to take in the current state.  With
           probability self.epsilon, we should take a random action and
-          take the best policy action otherwise.  Note that if there are
-          no legal actions, which is the case at the terminal state, you
-          should choose None as the action.
+          take the best policy action otherwise.
         """
-        # Pick Action
         legalActions = self.actions
         action = None
 
@@ -93,12 +82,9 @@ class QLearningAgent():
 
     def update(self, state, action, nextState, reward):
         """
-          The parent class calls this to observe a
           state = action => nextState and reward transition.
-          You should do your Q-Value update here
 
-          NOTE: You should never call this function,
-          it will be called on your behalf
+          Q-Value updates happen here
         """
         qValues = dict()
         for a in self.actions:
