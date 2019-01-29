@@ -9,7 +9,6 @@ from gym.utils import seeding
 WINDOW_WIDTH = 600
 WINDOW_HEIGHT = 600
 
-
 class GridWorldHardEnv(gym.Env):
     metadata = {'render.modes': ['human']}
 

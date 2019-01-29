@@ -14,7 +14,8 @@ class QLearningAgent():
         - self.gamma (discount rate)
     """
     def __init__(self, actions):
-        self.epsilon = 0.8      #Exploration
+        self.epsilon = 0.2      #Exploration
+        self.e_decay = 0.5
         self.lr = 0.5           #Learning rate
         self.gamma = 0.8        #Discount rate
         self.actions = actions
