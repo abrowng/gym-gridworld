@@ -2,7 +2,7 @@ import gym
 import gym_gridworld
 import time
 
-env = gym.make('gridworld-v0')
+env = gym.make('gridworldHard-v0')
 
 for i in range(100):    #100 episodes
     env.reset()

@@ -101,12 +101,11 @@ class QLearningAgent():
     def getValue(self, state):
         return self.computeValueFromQValues(state)
 
-
-env = gym.make('gridworld-v0')
+env = gym.make('gridworldHard-v0')
 
 agent = QLearningAgent(env.actions)
 
-for i in range(100):    #100 episodes
+for i in range(1000):    #100 episodes
     state = env.reset()
     done = False
     while done == False:
@@ -116,8 +115,8 @@ for i in range(100):    #100 episodes
         action = agent.getAction(state)
         state, reward, done, info = env.step(action)
         agent.update(prevState, action, state, reward)
-    time.sleep(1)
+    time.sleep(0.2)
     print("")
     print("Terminal state reached: ", state)
-    print("Episode Complete! Reward: ", reward)
+    print("Episode ", i, " Complete! Reward: ", reward)
     print("======================================")
